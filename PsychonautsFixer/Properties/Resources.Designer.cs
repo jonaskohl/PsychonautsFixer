@@ -63,49 +63,9 @@ namespace PsychonautsFixer.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap aero_busy_sprite {
-            get {
-                object obj = ResourceManager.GetObject("aero_busy_sprite", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap brains {
-            get {
-                object obj = ResourceManager.GetObject("brains", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap brains_bordered {
-            get {
-                object obj = ResourceManager.GetObject("brains_bordered", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap brains_bordered_withempty {
             get {
                 object obj = ResourceManager.GetObject("brains_bordered_withempty", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap brains_pingpong {
-            get {
-                object obj = ResourceManager.GetObject("brains_pingpong", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -127,16 +87,6 @@ namespace PsychonautsFixer.Properties {
             get {
                 object obj = ResourceManager.GetObject("PSYCHO", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap psychonauts_16 {
-            get {
-                object obj = ResourceManager.GetObject("psychonauts_16", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
             }
         }
         

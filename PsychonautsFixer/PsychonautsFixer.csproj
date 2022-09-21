@@ -10,6 +10,7 @@
 		<ApplicationIcon>PSYFIX.ICO</ApplicationIcon>
 		<ApplicationManifest>app.manifest</ApplicationManifest>
 		<Authors>Jonas Kohl</Authors>
+		<VersionPrefix>1.0.1.0</VersionPrefix>
 	</PropertyGroup>
 
 	<ItemGroup>

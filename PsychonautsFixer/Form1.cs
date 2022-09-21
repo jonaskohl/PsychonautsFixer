@@ -369,28 +369,32 @@ namespace PsychonautsFixer
 
         private void launchButton_Click(object sender, EventArgs e)
         {
-            var btnSave = new TaskDialogButton("Save and start");
-            var btnDiscard = new TaskDialogButton("Start without saving");
-            var btnCancel = new TaskDialogButton("Don't start");
-            var res = TaskDialog.ShowDialog(new TaskDialogPage()
+            if (HasUnsavedChanges)
             {
-                Buttons = new TaskDialogButtonCollection()
+                var btnSave = new TaskDialogButton("Save and start");
+                var btnDiscard = new TaskDialogButton("Start without saving");
+                var btnCancel = new TaskDialogButton("Don't start");
+                var res = TaskDialog.ShowDialog(new TaskDialogPage()
+                {
+                    Buttons = new TaskDialogButtonCollection()
                 {
                     btnSave,
                     btnDiscard,
                     btnCancel
                 },
-                Icon = TaskDialogIcon.Warning,
-                Caption = "Psychonauts Fixer",
-                Text = "There are unsaved changes. Do you want to save them before you start the game?"
-            });
+                    Icon = TaskDialogIcon.Warning,
+                    Caption = "Psychonauts Fixer",
+                    Text = "There are unsaved changes. Do you want to save them before you start the game?"
+                });
 
-            if (res == btnSave)
-            {
-                WindowApply();
-            } else if (res == btnCancel)
-            {
-                return;
+                if (res == btnSave)
+                {
+                    WindowApply();
+                }
+                else if (res == btnCancel)
+                {
+                    return;
+                }
             }
 
             var psi = new ProcessStartInfo()

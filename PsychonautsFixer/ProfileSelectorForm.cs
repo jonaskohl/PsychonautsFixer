@@ -28,6 +28,8 @@ namespace PsychonautsFixer
                 {
                     var profile = $"profile {i}";
                     var folder = Path.Combine(profilesFolder, profile);
+                    if (!Directory.Exists(folder))
+                        return null;
                     var files = Directory.GetFiles(folder);
                     var prFile = files.FirstOrDefault(f => {
                         var b = Path.GetFileName(f);

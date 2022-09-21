@@ -63,10 +63,10 @@
             // 
             this.stackedImagePlayer1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.stackedImagePlayer1.AnimationEnabled = false;
-            this.stackedImagePlayer1.Direction = PsychonautsFixer.StackedImageDirection.TopToBottom;
-            this.stackedImagePlayer1.FrameDisplayTime = 25;
-            this.stackedImagePlayer1.Frames = 18;
-            this.stackedImagePlayer1.Image = global::PsychonautsFixer.Properties.Resources.aero_busy_sprite;
+            this.stackedImagePlayer1.Direction = PsychonautsFixer.StackedImageDirection.LeftToRight;
+            this.stackedImagePlayer1.FrameDisplayTime = 100;
+            this.stackedImagePlayer1.Frames = 1;
+            this.stackedImagePlayer1.Image = null;
             this.stackedImagePlayer1.Location = new System.Drawing.Point(3, 3);
             this.stackedImagePlayer1.Name = "stackedImagePlayer1";
             this.stackedImagePlayer1.Size = new System.Drawing.Size(22, 22);
