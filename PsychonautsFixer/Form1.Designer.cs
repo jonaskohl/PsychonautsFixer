@@ -51,6 +51,26 @@
             this.trackGamma = new System.Windows.Forms.TrackBar();
             this.spinnerGamma = new System.Windows.Forms.NumericUpDown();
             this.checkFSFX = new System.Windows.Forms.CheckBox();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
+            this.checkEAX = new System.Windows.Forms.CheckBox();
+            this.checkHWAudio = new System.Windows.Forms.CheckBox();
+            this.headerLabel5 = new PsychonautsFixer.HeaderLabel();
+            this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.trackVolMaster = new System.Windows.Forms.TrackBar();
+            this.spinnerVolMaster = new System.Windows.Forms.NumericUpDown();
+            this.label6 = new System.Windows.Forms.Label();
+            this.trackVolMusic = new System.Windows.Forms.TrackBar();
+            this.spinnerVolMusic = new System.Windows.Forms.NumericUpDown();
+            this.label7 = new System.Windows.Forms.Label();
+            this.trackVolFX = new System.Windows.Forms.TrackBar();
+            this.spinnerVolFX = new System.Windows.Forms.NumericUpDown();
+            this.label8 = new System.Windows.Forms.Label();
+            this.trackVolVoices = new System.Windows.Forms.TrackBar();
+            this.spinnerVolVoices = new System.Windows.Forms.NumericUpDown();
+            this.headerLabel6 = new PsychonautsFixer.HeaderLabel();
+            this.checkSubtitles = new System.Windows.Forms.CheckBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.headerLabel3 = new PsychonautsFixer.HeaderLabel();
@@ -72,6 +92,7 @@
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.launchButton = new PsychonautsFixer.ImageOnlyButton();
             this.browseButton = new PsychonautsFixer.ImageOnlyButton();
+            this.profileButton = new PsychonautsFixer.ImageOnlyButton();
             this.helpButton = new PsychonautsFixer.ImageOnlyButton();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.helpProvider1 = new System.Windows.Forms.HelpProvider();
@@ -84,6 +105,17 @@
             this.tableLayoutPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackGamma)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spinnerGamma)).BeginInit();
+            this.tabPage4.SuspendLayout();
+            this.tableLayoutPanel7.SuspendLayout();
+            this.tableLayoutPanel8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackVolMaster)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spinnerVolMaster)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackVolMusic)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spinnerVolMusic)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackVolFX)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spinnerVolFX)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackVolVoices)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spinnerVolVoices)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -98,6 +130,7 @@
             // 
             this.tableLayoutPanel3.SetColumnSpan(this.tabControl1, 2);
             this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -365,6 +398,7 @@
             // 
             this.tableLayoutPanel4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel4.AutoSize = true;
             this.tableLayoutPanel4.ColumnCount = 3;
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -376,7 +410,7 @@
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(355, 44);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(355, 51);
             this.tableLayoutPanel4.TabIndex = 5;
             // 
             // label3
@@ -384,7 +418,7 @@
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label3.AutoSize = true;
             this.helpProvider1.SetHelpString(this.label3, "Adjusts the game\'s gamma (brightness).");
-            this.label3.Location = new System.Drawing.Point(3, 14);
+            this.label3.Location = new System.Drawing.Point(3, 18);
             this.label3.Name = "label3";
             this.helpProvider1.SetShowHelp(this.label3, true);
             this.label3.Size = new System.Drawing.Size(65, 15);
@@ -401,7 +435,7 @@
             this.trackGamma.Minimum = 250000;
             this.trackGamma.Name = "trackGamma";
             this.helpProvider1.SetShowHelp(this.trackGamma, true);
-            this.trackGamma.Size = new System.Drawing.Size(192, 38);
+            this.trackGamma.Size = new System.Drawing.Size(192, 45);
             this.trackGamma.TabIndex = 1;
             this.trackGamma.TickFrequency = 125000;
             this.trackGamma.TickStyle = System.Windows.Forms.TickStyle.Both;
@@ -413,7 +447,7 @@
             this.spinnerGamma.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.spinnerGamma.DecimalPlaces = 6;
             this.helpProvider1.SetHelpString(this.spinnerGamma, "Adjusts the game\'s gamma (brightness).");
-            this.spinnerGamma.Location = new System.Drawing.Point(272, 10);
+            this.spinnerGamma.Location = new System.Drawing.Point(272, 14);
             this.spinnerGamma.Maximum = new decimal(new int[] {
             25,
             0,
@@ -448,6 +482,358 @@
             this.checkFSFX.Text = "Enable fullscreen effects";
             this.checkFSFX.UseVisualStyleBackColor = true;
             this.checkFSFX.CheckedChanged += new System.EventHandler(this.AnyCheckChanged);
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.BackColor = System.Drawing.SystemColors.Window;
+            this.tabPage4.Controls.Add(this.tableLayoutPanel7);
+            this.tabPage4.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.tabPage4.Location = new System.Drawing.Point(4, 24);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(367, 367);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "Audio settings";
+            // 
+            // tableLayoutPanel7
+            // 
+            this.tableLayoutPanel7.ColumnCount = 1;
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel7.Controls.Add(this.checkEAX, 0, 5);
+            this.tableLayoutPanel7.Controls.Add(this.checkHWAudio, 0, 4);
+            this.tableLayoutPanel7.Controls.Add(this.headerLabel5, 0, 0);
+            this.tableLayoutPanel7.Controls.Add(this.tableLayoutPanel8, 0, 1);
+            this.tableLayoutPanel7.Controls.Add(this.headerLabel6, 0, 2);
+            this.tableLayoutPanel7.Controls.Add(this.checkSubtitles, 0, 3);
+            this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel7.Name = "tableLayoutPanel7";
+            this.tableLayoutPanel7.RowCount = 7;
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(361, 361);
+            this.tableLayoutPanel7.TabIndex = 0;
+            // 
+            // checkEAX
+            // 
+            this.checkEAX.AutoSize = true;
+            this.checkEAX.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.helpProvider1.SetHelpString(this.checkEAX, "Use Creative Labs Environmental Audio Extensions (might not work on newer operati" +
+        "ng systems).");
+            this.checkEAX.Location = new System.Drawing.Point(3, 301);
+            this.checkEAX.Name = "checkEAX";
+            this.helpProvider1.SetShowHelp(this.checkEAX, true);
+            this.checkEAX.Size = new System.Drawing.Size(75, 20);
+            this.checkEAX.TabIndex = 10;
+            this.checkEAX.Text = "Use EAX";
+            this.checkEAX.UseVisualStyleBackColor = true;
+            this.checkEAX.CheckedChanged += new System.EventHandler(this.AnyCheckChanged);
+            // 
+            // checkHWAudio
+            // 
+            this.checkHWAudio.AutoSize = true;
+            this.checkHWAudio.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.helpProvider1.SetHelpString(this.checkHWAudio, "Uses hardware accelerated audio mixing.");
+            this.checkHWAudio.Location = new System.Drawing.Point(3, 275);
+            this.checkHWAudio.Name = "checkHWAudio";
+            this.helpProvider1.SetShowHelp(this.checkHWAudio, true);
+            this.checkHWAudio.Size = new System.Drawing.Size(199, 20);
+            this.checkHWAudio.TabIndex = 9;
+            this.checkHWAudio.Text = "Use hardware accelerated audio";
+            this.checkHWAudio.UseVisualStyleBackColor = true;
+            this.checkHWAudio.CheckedChanged += new System.EventHandler(this.AnyCheckChanged);
+            // 
+            // headerLabel5
+            // 
+            this.headerLabel5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.headerLabel5.Location = new System.Drawing.Point(0, 0);
+            this.headerLabel5.Margin = new System.Windows.Forms.Padding(0);
+            this.headerLabel5.Name = "headerLabel5";
+            this.headerLabel5.Size = new System.Drawing.Size(361, 15);
+            this.headerLabel5.TabIndex = 0;
+            this.headerLabel5.Text = "Volume";
+            // 
+            // tableLayoutPanel8
+            // 
+            this.tableLayoutPanel8.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel8.AutoSize = true;
+            this.tableLayoutPanel8.ColumnCount = 3;
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel8.Controls.Add(this.label5, 0, 0);
+            this.tableLayoutPanel8.Controls.Add(this.trackVolMaster, 1, 0);
+            this.tableLayoutPanel8.Controls.Add(this.spinnerVolMaster, 2, 0);
+            this.tableLayoutPanel8.Controls.Add(this.label6, 0, 1);
+            this.tableLayoutPanel8.Controls.Add(this.trackVolMusic, 1, 1);
+            this.tableLayoutPanel8.Controls.Add(this.spinnerVolMusic, 2, 1);
+            this.tableLayoutPanel8.Controls.Add(this.label7, 0, 2);
+            this.tableLayoutPanel8.Controls.Add(this.trackVolFX, 1, 2);
+            this.tableLayoutPanel8.Controls.Add(this.spinnerVolFX, 2, 2);
+            this.tableLayoutPanel8.Controls.Add(this.label8, 0, 3);
+            this.tableLayoutPanel8.Controls.Add(this.trackVolVoices, 1, 3);
+            this.tableLayoutPanel8.Controls.Add(this.spinnerVolVoices, 2, 3);
+            this.tableLayoutPanel8.Location = new System.Drawing.Point(3, 18);
+            this.tableLayoutPanel8.Name = "tableLayoutPanel8";
+            this.tableLayoutPanel8.RowCount = 4;
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(355, 204);
+            this.tableLayoutPanel8.TabIndex = 6;
+            // 
+            // label5
+            // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label5.AutoSize = true;
+            this.helpProvider1.SetHelpString(this.label5, "Adjusts the game\'s master volume.");
+            this.label5.Location = new System.Drawing.Point(3, 18);
+            this.label5.Name = "label5";
+            this.helpProvider1.SetShowHelp(this.label5, true);
+            this.label5.Size = new System.Drawing.Size(46, 15);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "Master:";
+            // 
+            // trackVolMaster
+            // 
+            this.trackVolMaster.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.helpProvider1.SetHelpString(this.trackVolMaster, "Adjusts the game\'s master volume.");
+            this.trackVolMaster.LargeChange = 100000;
+            this.trackVolMaster.Location = new System.Drawing.Point(55, 3);
+            this.trackVolMaster.Maximum = 1000000;
+            this.trackVolMaster.Name = "trackVolMaster";
+            this.helpProvider1.SetShowHelp(this.trackVolMaster, true);
+            this.trackVolMaster.Size = new System.Drawing.Size(211, 45);
+            this.trackVolMaster.TabIndex = 1;
+            this.trackVolMaster.TickFrequency = 125000;
+            this.trackVolMaster.TickStyle = System.Windows.Forms.TickStyle.Both;
+            this.trackVolMaster.Value = 1000000;
+            this.trackVolMaster.Scroll += new System.EventHandler(this.trackVolMaster_Scroll);
+            // 
+            // spinnerVolMaster
+            // 
+            this.spinnerVolMaster.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.spinnerVolMaster.DecimalPlaces = 6;
+            this.helpProvider1.SetHelpString(this.spinnerVolMaster, "Adjusts the game\'s master volume.");
+            this.spinnerVolMaster.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.spinnerVolMaster.Location = new System.Drawing.Point(272, 14);
+            this.spinnerVolMaster.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.spinnerVolMaster.Name = "spinnerVolMaster";
+            this.helpProvider1.SetShowHelp(this.spinnerVolMaster, true);
+            this.spinnerVolMaster.Size = new System.Drawing.Size(80, 23);
+            this.spinnerVolMaster.TabIndex = 2;
+            this.spinnerVolMaster.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.spinnerVolMaster.ValueChanged += new System.EventHandler(this.spinnerVolMaster_ValueChanged);
+            // 
+            // label6
+            // 
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label6.AutoSize = true;
+            this.helpProvider1.SetHelpString(this.label6, "Adjusts the game\'s music volume.");
+            this.label6.Location = new System.Drawing.Point(3, 69);
+            this.label6.Name = "label6";
+            this.helpProvider1.SetShowHelp(this.label6, true);
+            this.label6.Size = new System.Drawing.Size(42, 15);
+            this.label6.TabIndex = 3;
+            this.label6.Text = "Music:";
+            // 
+            // trackVolMusic
+            // 
+            this.trackVolMusic.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.helpProvider1.SetHelpString(this.trackVolMusic, "Adjusts the game\'s music volume.");
+            this.trackVolMusic.LargeChange = 100000;
+            this.trackVolMusic.Location = new System.Drawing.Point(55, 54);
+            this.trackVolMusic.Maximum = 1000000;
+            this.trackVolMusic.Name = "trackVolMusic";
+            this.helpProvider1.SetShowHelp(this.trackVolMusic, true);
+            this.trackVolMusic.Size = new System.Drawing.Size(211, 45);
+            this.trackVolMusic.TabIndex = 1;
+            this.trackVolMusic.TickFrequency = 125000;
+            this.trackVolMusic.TickStyle = System.Windows.Forms.TickStyle.Both;
+            this.trackVolMusic.Value = 1000000;
+            this.trackVolMusic.Scroll += new System.EventHandler(this.trackVolMusic_Scroll);
+            // 
+            // spinnerVolMusic
+            // 
+            this.spinnerVolMusic.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.spinnerVolMusic.DecimalPlaces = 6;
+            this.helpProvider1.SetHelpString(this.spinnerVolMusic, "Adjusts the game\'s music volume.");
+            this.spinnerVolMusic.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.spinnerVolMusic.Location = new System.Drawing.Point(272, 65);
+            this.spinnerVolMusic.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.spinnerVolMusic.Name = "spinnerVolMusic";
+            this.helpProvider1.SetShowHelp(this.spinnerVolMusic, true);
+            this.spinnerVolMusic.Size = new System.Drawing.Size(80, 23);
+            this.spinnerVolMusic.TabIndex = 2;
+            this.spinnerVolMusic.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.spinnerVolMusic.ValueChanged += new System.EventHandler(this.spinnerVolMusic_ValueChanged);
+            // 
+            // label7
+            // 
+            this.label7.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label7.AutoSize = true;
+            this.helpProvider1.SetHelpString(this.label7, "Adjusts the game\'s sound effects volume.");
+            this.label7.Location = new System.Drawing.Point(3, 120);
+            this.label7.Name = "label7";
+            this.helpProvider1.SetShowHelp(this.label7, true);
+            this.label7.Size = new System.Drawing.Size(45, 15);
+            this.label7.TabIndex = 3;
+            this.label7.Text = "Effects:";
+            // 
+            // trackVolFX
+            // 
+            this.trackVolFX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.helpProvider1.SetHelpString(this.trackVolFX, "Adjusts the game\'s sound effects volume.");
+            this.trackVolFX.LargeChange = 100000;
+            this.trackVolFX.Location = new System.Drawing.Point(55, 105);
+            this.trackVolFX.Maximum = 1000000;
+            this.trackVolFX.Name = "trackVolFX";
+            this.helpProvider1.SetShowHelp(this.trackVolFX, true);
+            this.trackVolFX.Size = new System.Drawing.Size(211, 45);
+            this.trackVolFX.TabIndex = 1;
+            this.trackVolFX.TickFrequency = 125000;
+            this.trackVolFX.TickStyle = System.Windows.Forms.TickStyle.Both;
+            this.trackVolFX.Value = 1000000;
+            this.trackVolFX.Scroll += new System.EventHandler(this.trackVolFX_Scroll);
+            // 
+            // spinnerVolFX
+            // 
+            this.spinnerVolFX.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.spinnerVolFX.DecimalPlaces = 6;
+            this.helpProvider1.SetHelpString(this.spinnerVolFX, "Adjusts the game\'s sound effects volume.");
+            this.spinnerVolFX.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.spinnerVolFX.Location = new System.Drawing.Point(272, 116);
+            this.spinnerVolFX.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.spinnerVolFX.Name = "spinnerVolFX";
+            this.helpProvider1.SetShowHelp(this.spinnerVolFX, true);
+            this.spinnerVolFX.Size = new System.Drawing.Size(80, 23);
+            this.spinnerVolFX.TabIndex = 2;
+            this.spinnerVolFX.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.spinnerVolFX.ValueChanged += new System.EventHandler(this.spinnerVolFX_ValueChanged);
+            // 
+            // label8
+            // 
+            this.label8.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label8.AutoSize = true;
+            this.helpProvider1.SetHelpString(this.label8, "Adjusts the game\'s voice volume.");
+            this.label8.Location = new System.Drawing.Point(3, 171);
+            this.label8.Name = "label8";
+            this.helpProvider1.SetShowHelp(this.label8, true);
+            this.label8.Size = new System.Drawing.Size(43, 15);
+            this.label8.TabIndex = 3;
+            this.label8.Text = "Voices:";
+            // 
+            // trackVolVoices
+            // 
+            this.trackVolVoices.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.helpProvider1.SetHelpString(this.trackVolVoices, "Adjusts the game\'s voice volume.");
+            this.trackVolVoices.LargeChange = 100000;
+            this.trackVolVoices.Location = new System.Drawing.Point(55, 156);
+            this.trackVolVoices.Maximum = 1000000;
+            this.trackVolVoices.Name = "trackVolVoices";
+            this.helpProvider1.SetShowHelp(this.trackVolVoices, true);
+            this.trackVolVoices.Size = new System.Drawing.Size(211, 45);
+            this.trackVolVoices.TabIndex = 1;
+            this.trackVolVoices.TickFrequency = 125000;
+            this.trackVolVoices.TickStyle = System.Windows.Forms.TickStyle.Both;
+            this.trackVolVoices.Value = 1000000;
+            this.trackVolVoices.Scroll += new System.EventHandler(this.trackVolVoices_Scroll);
+            // 
+            // spinnerVolVoices
+            // 
+            this.spinnerVolVoices.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.spinnerVolVoices.DecimalPlaces = 6;
+            this.helpProvider1.SetHelpString(this.spinnerVolVoices, "Adjusts the game\'s voice volume.");
+            this.spinnerVolVoices.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.spinnerVolVoices.Location = new System.Drawing.Point(272, 167);
+            this.spinnerVolVoices.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.spinnerVolVoices.Name = "spinnerVolVoices";
+            this.helpProvider1.SetShowHelp(this.spinnerVolVoices, true);
+            this.spinnerVolVoices.Size = new System.Drawing.Size(80, 23);
+            this.spinnerVolVoices.TabIndex = 2;
+            this.spinnerVolVoices.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.spinnerVolVoices.ValueChanged += new System.EventHandler(this.spinnerVolVoices_ValueChanged);
+            // 
+            // headerLabel6
+            // 
+            this.headerLabel6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.headerLabel6.Location = new System.Drawing.Point(0, 231);
+            this.headerLabel6.Margin = new System.Windows.Forms.Padding(0, 6, 0, 0);
+            this.headerLabel6.Name = "headerLabel6";
+            this.headerLabel6.Size = new System.Drawing.Size(361, 15);
+            this.headerLabel6.TabIndex = 7;
+            this.headerLabel6.Text = "Other";
+            // 
+            // checkSubtitles
+            // 
+            this.checkSubtitles.AutoSize = true;
+            this.checkSubtitles.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.helpProvider1.SetHelpString(this.checkSubtitles, "Shows subtitles in cutscenes and character interactions.");
+            this.checkSubtitles.Location = new System.Drawing.Point(3, 249);
+            this.checkSubtitles.Name = "checkSubtitles";
+            this.helpProvider1.SetShowHelp(this.checkSubtitles, true);
+            this.checkSubtitles.Size = new System.Drawing.Size(108, 20);
+            this.checkSubtitles.TabIndex = 8;
+            this.checkSubtitles.Text = "Show subtitles";
+            this.checkSubtitles.UseVisualStyleBackColor = true;
+            this.checkSubtitles.CheckedChanged += new System.EventHandler(this.AnyCheckChanged);
             // 
             // tabPage2
             // 
@@ -702,11 +1088,12 @@
             this.flowLayoutPanel2.AutoSize = true;
             this.flowLayoutPanel2.Controls.Add(this.launchButton);
             this.flowLayoutPanel2.Controls.Add(this.browseButton);
+            this.flowLayoutPanel2.Controls.Add(this.profileButton);
             this.flowLayoutPanel2.Controls.Add(this.helpButton);
             this.flowLayoutPanel2.Location = new System.Drawing.Point(6, 401);
             this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(6);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(81, 24);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(108, 24);
             this.flowLayoutPanel2.TabIndex = 1;
             this.flowLayoutPanel2.WrapContents = false;
             // 
@@ -740,11 +1127,26 @@
             this.browseButton.UseVisualStyleBackColor = true;
             this.browseButton.Click += new System.EventHandler(this.browseButton_Click);
             // 
+            // profileButton
+            // 
+            this.profileButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.helpProvider1.SetHelpString(this.profileButton, "Allows you to change the selected profile.");
+            this.profileButton.Location = new System.Drawing.Point(54, 0);
+            this.profileButton.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
+            this.profileButton.Name = "profileButton";
+            this.helpProvider1.SetShowHelp(this.profileButton, true);
+            this.profileButton.Size = new System.Drawing.Size(24, 24);
+            this.profileButton.TabIndex = 5;
+            this.profileButton.Text = "Switch profile";
+            this.toolTip1.SetToolTip(this.profileButton, "Switch profile");
+            this.profileButton.UseVisualStyleBackColor = true;
+            this.profileButton.Click += new System.EventHandler(this.profileButton_Click);
+            // 
             // helpButton
             // 
             this.helpButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.helpProvider1.SetHelpString(this.helpButton, "Allows you to click on any option to get help.");
-            this.helpButton.Location = new System.Drawing.Point(54, 0);
+            this.helpButton.Location = new System.Drawing.Point(81, 0);
             this.helpButton.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
             this.helpButton.Name = "helpButton";
             this.helpProvider1.SetShowHelp(this.helpButton, true);
@@ -781,6 +1183,19 @@
             this.tableLayoutPanel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackGamma)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.spinnerGamma)).EndInit();
+            this.tabPage4.ResumeLayout(false);
+            this.tableLayoutPanel7.ResumeLayout(false);
+            this.tableLayoutPanel7.PerformLayout();
+            this.tableLayoutPanel8.ResumeLayout(false);
+            this.tableLayoutPanel8.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackVolMaster)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spinnerVolMaster)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackVolMusic)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spinnerVolMusic)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackVolFX)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spinnerVolFX)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackVolVoices)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spinnerVolVoices)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tableLayoutPanel6.ResumeLayout(false);
             this.tableLayoutPanel6.PerformLayout();
@@ -843,5 +1258,27 @@
         private HelpProvider helpProvider1;
         private HeaderLabel headerLabel4;
         private CheckBox checkRumble;
+        private ImageOnlyButton profileButton;
+        private TabPage tabPage4;
+        private TableLayoutPanel tableLayoutPanel7;
+        private HeaderLabel headerLabel5;
+        private TableLayoutPanel tableLayoutPanel8;
+        private Label label5;
+        private TrackBar trackVolMaster;
+        private NumericUpDown spinner;
+        private Label label6;
+        private TrackBar trackVolMusic;
+        private NumericUpDown spinnerVolMusic;
+        private Label label7;
+        private TrackBar trackVolFX;
+        private NumericUpDown spinnerVolFX;
+        private Label label8;
+        private TrackBar trackVolVoices;
+        private NumericUpDown spinnerVolVoices;
+        private NumericUpDown spinnerVolMaster;
+        private HeaderLabel headerLabel6;
+        private CheckBox checkSubtitles;
+        private CheckBox checkHWAudio;
+        private CheckBox checkEAX;
     }
 }

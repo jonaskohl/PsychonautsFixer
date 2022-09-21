@@ -19,6 +19,7 @@ namespace PsychonautsFixer
             SIID_FOLDEROPEN = 4,
             SIID_HELP = 23,
             SIID_DESKTOPPC = 94,
+            SIID_USERS = 96,
         }
 
         [Flags]

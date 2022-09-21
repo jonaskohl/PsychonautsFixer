@@ -67,7 +67,7 @@
             this.buttonProfile3.Size = new System.Drawing.Size(100, 87);
             this.buttonProfile3.TabIndex = 2;
             this.buttonProfile3.Tag = "profile 3";
-            this.buttonProfile3.Text = "Profile 3";
+            this.buttonProfile3.Text = "Profile &3";
             this.buttonProfile3.UseVisualStyleBackColor = true;
             this.buttonProfile3.Click += new System.EventHandler(this.ProfileButton_Click);
             // 
@@ -80,7 +80,7 @@
             this.buttonProfile2.Size = new System.Drawing.Size(99, 87);
             this.buttonProfile2.TabIndex = 1;
             this.buttonProfile2.Tag = "profile 2";
-            this.buttonProfile2.Text = "Profile 2";
+            this.buttonProfile2.Text = "Profile &2";
             this.buttonProfile2.UseVisualStyleBackColor = true;
             this.buttonProfile2.Click += new System.EventHandler(this.ProfileButton_Click);
             // 
@@ -93,7 +93,7 @@
             this.buttonProfile1.Size = new System.Drawing.Size(98, 87);
             this.buttonProfile1.TabIndex = 0;
             this.buttonProfile1.Tag = "profile 1";
-            this.buttonProfile1.Text = "Profile 1";
+            this.buttonProfile1.Text = "Profile &1";
             this.buttonProfile1.UseVisualStyleBackColor = true;
             this.buttonProfile1.Click += new System.EventHandler(this.ProfileButton_Click);
             // 
