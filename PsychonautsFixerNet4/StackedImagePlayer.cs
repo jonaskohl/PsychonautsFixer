@@ -1,16 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using Timer = System.Windows.Forms.Timer;
 
 namespace PsychonautsFixer
 {
     public class StackedImagePlayer : Control
     {
-        public Image? Image { get; set; } = null;
+        public Image Image { get; set; } = null;
         public int Frames { get; set; } = 4;
         public StackedImageDirection Direction { get; set; } = StackedImageDirection.LeftToRight;
         public int FrameDisplayTime
@@ -42,7 +44,7 @@ namespace PsychonautsFixer
 
         public StackedImagePlayer()
         {
-            designMode = DesignMode || IsAncestorSiteInDesignMode || LicenseManager.UsageMode == LicenseUsageMode.Designtime;
+            designMode = DesignMode || LicenseManager.UsageMode == LicenseUsageMode.Designtime;
 
             DoubleBuffered = true;
 
@@ -54,7 +56,7 @@ namespace PsychonautsFixer
             animationTimer.Tick += AnimationTimer_Tick;
         }
 
-        private void AnimationTimer_Tick(object? sender, EventArgs e)
+        private void AnimationTimer_Tick(object sender, EventArgs e)
         {
             Invalidate();
             currentFrame = (currentFrame + 1) % Frames;

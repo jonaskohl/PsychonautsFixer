@@ -1,4 +1,6 @@
-﻿namespace PsychonautsFixer
+﻿using System.Windows.Forms;
+
+namespace PsychonautsFixer
 {
     partial class ProfileSelectorForm
     {
@@ -144,7 +146,6 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
-            this.MdiChildrenMinimizedAnchorBottom = false;
             this.Name = "ProfileSelectorForm";
             this.Padding = new System.Windows.Forms.Padding(9);
             this.ShowIcon = false;

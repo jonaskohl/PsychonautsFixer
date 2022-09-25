@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,7 +13,7 @@ namespace PsychonautsFixer
 {
     public partial class ProfileSelectorForm : Form
     {
-        string? selectedProfile = "";
+        string selectedProfile = "";
         string installLocation = "";
 
         public ProfileSelectorForm()
@@ -20,7 +21,7 @@ namespace PsychonautsFixer
             InitializeComponent();
         }
 
-        private static string?[] GetProfileNames(string installLocation)
+        private static string[] GetProfileNames(string installLocation)
         {
             var profilesFolder = Path.Combine(installLocation, "profiles");
             return new[] { 1, 2, 3 }
@@ -74,60 +75,15 @@ namespace PsychonautsFixer
             }
         }
 
-        public static string? GetProfile2(string installLocation)
+        public static string GetProfile(string installLocation)
         {
-            var profileNames = GetProfileNames(installLocation);
-
-            var btnProfile1 = new TaskDialogCommandLinkButton(
-                "Profile 1",
-                descriptionText: string.IsNullOrEmpty(profileNames[0]) ? "(Empty)" : profileNames[0],
-                enabled: !string.IsNullOrEmpty(profileNames[0])
-            );
-            var btnProfile2 = new TaskDialogCommandLinkButton(
-                "Profile 2",
-                descriptionText: string.IsNullOrEmpty(profileNames[1]) ? "(Empty)" : profileNames[1],
-                enabled: !string.IsNullOrEmpty(profileNames[1])
-            );
-            var btnProfile3 = new TaskDialogCommandLinkButton(
-                "Profile 3",
-                descriptionText: string.IsNullOrEmpty(profileNames[2]) ? "(Empty)" : profileNames[2],
-                enabled: !string.IsNullOrEmpty(profileNames[2])
-            );
-            var tdp = new TaskDialogPage()
+            using (var f = new ProfileSelectorForm())
             {
-                Buttons = {
-                    TaskDialogButton.Continue,
-                    TaskDialogButton.Cancel,
-                    btnProfile1,
-                    btnProfile2,
-                    btnProfile3
-                },
-                Caption = "Select a profile",
-                Heading = "Select a profile"
-            };
-            var result = TaskDialog.ShowDialog(tdp, TaskDialogStartupLocation.CenterScreen);
-            string? resultString;
-            if (result == btnProfile1)
-                resultString = "profile 1";
-            else if (result == btnProfile2)
-                resultString = "profile 2";
-            else if (result == btnProfile3)
-                resultString = "profile 3";
-            else if (result == TaskDialogButton.Continue)
-                resultString = "";
-            else
-                resultString = null;
-
-            return resultString;
-        }
-
-        public static string? GetProfile(string installLocation)
-        {
-            using var f = new ProfileSelectorForm();
-            f.installLocation = installLocation;
-            if (f.ShowDialog() == DialogResult.OK)
-                return f.selectedProfile;
-            return null;
+                f.installLocation = installLocation;
+                if (f.ShowDialog() == DialogResult.OK)
+                    return f.selectedProfile;
+                return null;
+            }
         }
 
         private void ProfileButton_Click(object sender, EventArgs e)

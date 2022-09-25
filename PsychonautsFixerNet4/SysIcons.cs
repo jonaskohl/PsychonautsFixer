@@ -43,6 +43,11 @@ namespace PsychonautsFixer
 
         public static Icon GetSystemIcon(SHSTOCKICONID icon, IconSize size = IconSize.Unspecified)
         {
+            if (Environment.OSVersion.Version.Major < 6)
+            {
+                return GetSystemIconFallback(icon, size);
+            }
+
             var info = new SHSTOCKICONINFO();
             info.cbSize = (uint)unchecked(Marshal.SizeOf(info));
             var flags = SHGSI.SHGSI_ICON;
@@ -60,6 +65,30 @@ namespace PsychonautsFixer
             }
 
             return Icon.FromHandle(info.hIcon);
+        }
+
+        private static Icon GetSystemIconFallback(SHSTOCKICONID icon, IconSize size)
+        {
+            switch (icon)
+            {
+                case SHSTOCKICONID.SIID_FOLDEROPEN:
+                    return new Icon(Properties.Resources.SIID_FOLDEROPEN, GetSize(size));
+                case SHSTOCKICONID.SIID_HELP:
+                    return new Icon(Properties.Resources.SIID_HELP, GetSize(size));
+                case SHSTOCKICONID.SIID_DESKTOPPC:
+                    return new Icon(Properties.Resources.SIID_DESKTOPPC, GetSize(size));
+                case SHSTOCKICONID.SIID_USERS:
+                    return new Icon(Properties.Resources.SIID_USERS, GetSize(size));
+                default:
+                    return null;
+            }
+        }
+
+        private static Size GetSize(IconSize size)
+        {
+            if (size == IconSize.Large)
+                return new Size(32, 32);
+            return new Size(16, 16);
         }
 
         public enum IconSize

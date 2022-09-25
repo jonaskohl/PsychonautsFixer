@@ -1,9 +1,15 @@
+using System;
 using System.Diagnostics;
+using System.Drawing;
 using System.Globalization;
+using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Security.Principal;
 using System.Text;
+using System.Text.RegularExpressions;
+using System.Windows.Forms;
 
 namespace PsychonautsFixer
 {
@@ -17,10 +23,10 @@ namespace PsychonautsFixer
         Icon folderIcon, helpIcon, pcIcon, userIcon;
 
         string installLocation = "";
-        string? profile = null;
+        string profile = null;
 
-        string? displayIniLocation, audioIniLocation, profileIniLocation;
-        IniFile? displayIniFile, audioIniFile, profileIniFile;
+        string displayIniLocation, audioIniLocation, profileIniLocation;
+        IniFile displayIniFile, audioIniFile, profileIniFile;
 
         bool _hasUnsavedChanges = false;
         bool HasUnsavedChanges
@@ -41,6 +47,14 @@ namespace PsychonautsFixer
         public Form1()
         {
             InitializeComponent();
+            if (Environment.OSVersion.Version.Major < 6)
+            {
+                launchButton.FlatStyle =
+                    browseButton.FlatStyle =
+                    profileButton.FlatStyle =
+                    helpButton.FlatStyle =
+                    getFromScreenButton.FlatStyle = FlatStyle.Standard;
+            }
 
             RefreshApplyButton();
 
@@ -60,32 +74,32 @@ namespace PsychonautsFixer
             profileButton.HandleCreated += ProfileButton_SetImage;
         }
 
-        private void ProfileButton_SetImage(object? sender, EventArgs e)
+        private void ProfileButton_SetImage(object sender, EventArgs e)
         {
             profileButton.SetWin32Icon(userIcon);
         }
 
-        private void GetFromScreenButton_SetImage(object? sender, EventArgs e)
+        private void GetFromScreenButton_SetImage(object sender, EventArgs e)
         {
             getFromScreenButton.SetWin32Icon(pcIcon);
         }
 
-        private void HelpButton_SetImage(object? sender, EventArgs e)
+        private void HelpButton_SetImage(object sender, EventArgs e)
         {
             helpButton.SetWin32Icon(helpIcon);
         }
 
-        private void LaunchButton_SetImage(object? sender, EventArgs e)
+        private void LaunchButton_SetImage(object sender, EventArgs e)
         {
             launchButton.SetWin32Icon(Properties.Resources.PSYCHO);
         }
 
-        private void BrowseButton_SetImage(object? sender, EventArgs e)
+        private void BrowseButton_SetImage(object sender, EventArgs e)
         {
             browseButton.SetWin32Icon(folderIcon);
         }
 
-        private void Form1_FormClosing(object? sender, FormClosingEventArgs e)
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (e.CloseReason == CloseReason.UserClosing)
             {
@@ -93,7 +107,7 @@ namespace PsychonautsFixer
             }
         }
 
-        private void Form1_Shown(object? sender, EventArgs e)
+        private void Form1_Shown(object sender, EventArgs e)
         {
             var args = Environment.GetCommandLineArgs();
             var location =
@@ -128,7 +142,7 @@ namespace PsychonautsFixer
             if (File.Exists(displayIniLocation))
                 displayIniFile = IniFile.Load(displayIniLocation);
             else
-                displayIniFile = new();
+                displayIniFile = new IniFile();
 
             if (displayIniFile.ContainsSection("DisplaySettings"))
             {
@@ -172,7 +186,7 @@ namespace PsychonautsFixer
             if (File.Exists(audioIniLocation))
                 audioIniFile = IniFile.Load(audioIniLocation);
             else
-                audioIniFile = new();
+                audioIniFile = new IniFile();
 
             if (audioIniFile.ContainsSection("AudioSettings"))
             {
@@ -236,7 +250,7 @@ namespace PsychonautsFixer
 
         private bool PromptProfileSelect()
         {
-            profile = ProfileSelectorForm.GetProfile2(installLocation);
+            profile = ProfileSelectorForm.GetProfile(installLocation);
 
             if (profile is null)
             {
@@ -263,7 +277,7 @@ namespace PsychonautsFixer
                     if (File.Exists(profileIniLocation))
                         profileIniFile = IniFile.Load(profileIniLocation);
                     else
-                        profileIniFile = new();
+                        profileIniFile = new IniFile();
 
                     if (profileIniFile.ContainsSection("Global"))
                     {
@@ -306,12 +320,16 @@ namespace PsychonautsFixer
             currentStartInfo.WorkingDirectory = Environment.CurrentDirectory;
             currentStartInfo.UseShellExecute = true;
             currentStartInfo.Verb = "runas";
-            foreach (var arg in args)
-                currentStartInfo.ArgumentList.Add(arg);
+            currentStartInfo.Arguments = string.Join(" ", args.Select(arg => EscapeArg(arg)).ToArray());
 
             Application.Exit();
             Process.Start(currentStartInfo);
             return true;
+        }
+
+        private string EscapeArg(string arg)
+        {
+            return "\"" + Regex.Replace(arg, @"(\\+)$", @"$1$1") + "\"";
         }
 
         private void getFromScreenButton_Click(object sender, EventArgs e)
@@ -407,28 +425,17 @@ namespace PsychonautsFixer
         {
             if (!HasUnsavedChanges) return true;
 
-            var res = TaskDialog.ShowDialog(new TaskDialogPage()
-            {
-                Buttons = new TaskDialogButtonCollection()
-                {
-                    new TaskDialogButton("Save"),
-                    new TaskDialogButton("Discard"),
-                    new TaskDialogButton("Cancel")
-                },
-                Icon = TaskDialogIcon.Warning,
-                Caption = "Psychonauts Fixer",
-                Text = "There are unsaved changes. Do you want to save them?"
-            });
+            var result = UnsavedChangesForm.ShowDialog(this, "There are unsaved changes. Do you want to save them?", "Psychonauts Fixer");
 
-            if (res.Text == "Save")
+            if (result == DialogResult.Yes)
             {
                 WindowApply();
             }
 
-            return res.Text != "Cancel";
+            return result != DialogResult.Cancel;
         }
 
-        private void AnyCheckChanged(object? sender, EventArgs e)
+        private void AnyCheckChanged(object sender, EventArgs e)
         {
             HasUnsavedChanges = true;
         }
@@ -441,7 +448,7 @@ namespace PsychonautsFixer
             HasUnsavedChanges = true;
         }
 
-        private void spinnerGamma_ValueChanged(object? sender, EventArgs e)
+        private void spinnerGamma_ValueChanged(object sender, EventArgs e)
         {
             trackGamma.Value = (int)(spinnerGamma.Value * 1e6m);
             HasUnsavedChanges = true;
@@ -511,27 +518,13 @@ namespace PsychonautsFixer
         {
             if (HasUnsavedChanges)
             {
-                var btnSave = new TaskDialogButton("Save and start");
-                var btnDiscard = new TaskDialogButton("Start without saving");
-                var btnCancel = new TaskDialogButton("Don't start");
-                var res = TaskDialog.ShowDialog(new TaskDialogPage()
-                {
-                    Buttons = new TaskDialogButtonCollection()
-                {
-                    btnSave,
-                    btnDiscard,
-                    btnCancel
-                },
-                    Icon = TaskDialogIcon.Warning,
-                    Caption = "Psychonauts Fixer",
-                    Text = "There are unsaved changes. Do you want to save them before you start the game?"
-                });
+                var result = UnsavedChangesForm.ShowDialog(this, "There are unsaved changes. Do you want to save them before you start the game?", "Psychonauts Fixer");
 
-                if (res == btnSave)
+                if (result == DialogResult.Yes)
                 {
                     WindowApply();
                 }
-                else if (res == btnCancel)
+                else if (result == DialogResult.Cancel)
                 {
                     return;
                 }
@@ -550,27 +543,13 @@ namespace PsychonautsFixer
         {
             if (HasUnsavedChanges)
             {
-                var btnSave = new TaskDialogButton("Save and switch");
-                var btnDiscard = new TaskDialogButton("Switch without saving");
-                var btnCancel = new TaskDialogButton("Don't switch");
-                var res = TaskDialog.ShowDialog(new TaskDialogPage()
-                {
-                    Buttons = new TaskDialogButtonCollection()
-                {
-                    btnSave,
-                    btnDiscard,
-                    btnCancel
-                },
-                    Icon = TaskDialogIcon.Warning,
-                    Caption = "Psychonauts Fixer",
-                    Text = "There are unsaved changes. Do you want to save them before you switch the profile?"
-                });
+                var result = UnsavedChangesForm.ShowDialog(this, "There are unsaved changes. Do you want to save them before you switch the profile?", "Psychonauts Fixer");
 
-                if (res == btnSave)
+                if (result == DialogResult.Yes)
                 {
                     WindowApply();
                 }
-                else if (res == btnCancel)
+                else if (result == DialogResult.Cancel)
                 {
                     return;
                 }

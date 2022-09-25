@@ -99,5 +99,45 @@ namespace PsychonautsFixer.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Icon ähnlich wie (Symbol).
+        /// </summary>
+        internal static System.Drawing.Icon SIID_DESKTOPPC {
+            get {
+                object obj = ResourceManager.GetObject("SIID_DESKTOPPC", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Icon ähnlich wie (Symbol).
+        /// </summary>
+        internal static System.Drawing.Icon SIID_FOLDEROPEN {
+            get {
+                object obj = ResourceManager.GetObject("SIID_FOLDEROPEN", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Icon ähnlich wie (Symbol).
+        /// </summary>
+        internal static System.Drawing.Icon SIID_HELP {
+            get {
+                object obj = ResourceManager.GetObject("SIID_HELP", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Icon ähnlich wie (Symbol).
+        /// </summary>
+        internal static System.Drawing.Icon SIID_USERS {
+            get {
+                object obj = ResourceManager.GetObject("SIID_USERS", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
     }
 }

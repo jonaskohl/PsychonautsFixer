@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,20 +11,20 @@ namespace PsychonautsFixer
     {
         private List<IniSection> sections;
 
-        public string?[] SectionNames => sections.Select(s => s.Name).ToArray();
+        public string[] SectionNames => sections.Select(s => s.Name).ToArray();
 
         public IniFile()
         {
-            sections = new();
+            sections = new List<IniSection>();
         }
 
         public static IniFile Parse(string contents)
         {
             var ini = new IniFile();
 
-            var lines = contents.ReplaceLineEndings().Split(Environment.NewLine).Where(l => !l.StartsWith(";") && !string.IsNullOrWhiteSpace(l)).Select(l => l.Trim());
+            var lines = contents.Split(new string[] { Environment.NewLine }, StringSplitOptions.None).Where(l => !l.StartsWith(";") && !string.IsNullOrWhiteSpace(l)).Select(l => l.Trim());
 
-            string? currentSectionName = null; // Null indicates global section
+            string currentSectionName = null; // Null indicates global section
             foreach (var ln in lines)
             {
                 if (ln.StartsWith("[") && ln.EndsWith("]"))
@@ -32,7 +33,7 @@ namespace PsychonautsFixer
                 }
                 else
                 {
-                    (string key, string value, IList<string> _) = ln.Split(new[] { '=' }, 2);
+                    (string key, string value, IList<string> _) = ln.Split(new char[] { '=' }, 2);
                     ini.Set(currentSectionName, key, value);
                 }
             }
@@ -45,17 +46,17 @@ namespace PsychonautsFixer
             return Parse(File.ReadAllText(fileName));
         }
 
-        public string? Get(string key)
+        public string Get(string key)
         {
             return Get(null, key);
         }
 
-        public string? Get(string? section, string key)
+        public string Get(string section, string key)
         {
             return sections.Where(s => s.Name == section).FirstOrDefault()?.Get(key);
         }
 
-        public void Set(string? section, string key, string value)
+        public void Set(string section, string key, string value)
         {
             if (!sections.Any(s => s.Name == section))
                 sections.Add(new IniSection() { Name = section });
@@ -63,22 +64,22 @@ namespace PsychonautsFixer
             sections.Where(s => s.Name == section).FirstOrDefault()?.Set(key, value);
         }
 
-        public IniSection? GetSection(string? section)
+        public IniSection GetSection(string section)
         {
             return sections.FirstOrDefault(s => s.Name == section);
         }
 
-        public bool ContainsSection(string? section)
+        public bool ContainsSection(string section)
         {
             return sections.Any(s => s.Name == section);
         }
 
-        public void Remove(string? section, string key)
+        public void Remove(string section, string key)
         {
             sections.Where(s => s.Name == section).FirstOrDefault()?.Remove(key);
         }
 
-        public void RemoveSection(string? section)
+        public void RemoveSection(string section)
         {
             sections.RemoveAll(s => s.Name == section);
         }
@@ -105,11 +106,11 @@ namespace PsychonautsFixer
     public class IniSection
     {
         private Dictionary<string, string> entries;
-        public string? Name { get; set; }
+        public string Name { get; set; }
 
         public IniSection()
         {
-            entries = new();
+            entries = new Dictionary<string, string>();
         }
 
         public override string ToString()
@@ -132,7 +133,7 @@ namespace PsychonautsFixer
             return entries[key];
         }
 
-        public string? TryGet(string key, string? fallbackValue = null)
+        public string TryGet(string key, string fallbackValue = null)
         {
             return ContainsKey(key) ? Get(key) : fallbackValue;
         }
@@ -140,11 +141,6 @@ namespace PsychonautsFixer
         public bool Remove(string key)
         {
             return entries.Remove(key);
-        }
-
-        public bool Remove(string key, out string value)
-        {
-            return entries.Remove(key, out value!);
         }
 
         public string this[string key]

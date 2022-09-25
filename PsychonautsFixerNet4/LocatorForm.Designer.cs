@@ -1,4 +1,6 @@
-﻿namespace PsychonautsFixer
+﻿using System.Windows.Forms;
+
+namespace PsychonautsFixer
 {
     partial class LocatorForm
     {
@@ -153,7 +155,6 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
-            this.MdiChildrenMinimizedAnchorBottom = false;
             this.MinimumSize = new System.Drawing.Size(400, 0);
             this.Name = "LocatorForm";
             this.Padding = new System.Windows.Forms.Padding(9);

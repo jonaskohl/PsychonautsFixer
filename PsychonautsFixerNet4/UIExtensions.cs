@@ -1,4 +1,7 @@
-﻿using System.Runtime.InteropServices;
+﻿using System;
+using System.Drawing;
+using System.Runtime.InteropServices;
+using System.Windows.Forms;
 
 namespace PsychonautsFixer
 {
@@ -18,11 +21,14 @@ namespace PsychonautsFixer
         private const uint IMAGE_ICON = 1;
         private const int GWL_STYLE = -16;
 
-        public static int SetWin32Icon(this Button button, Icon? icon)
+
+        public static int SetWin32Icon(this Button button, Icon icon)
         {
-            //var style = GetWindowLong(button.Handle, GWL_STYLE);
-            //style |= BS_ICON;
-            //SetWindowLong(button.Handle, GWL_STYLE, style);
+            if (Environment.OSVersion.Version.Major < 6)
+            {
+                button.Image = icon.ToBitmap();
+                return 0;
+            }
             return SendMessage(button.Handle, BM_SETIMAGE, new IntPtr(IMAGE_ICON), icon?.Handle ?? IntPtr.Zero);
         }
     }

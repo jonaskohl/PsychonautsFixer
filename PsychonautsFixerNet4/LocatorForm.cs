@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -15,7 +16,7 @@ namespace PsychonautsFixer
 {
     public partial class LocatorForm : Form
     {
-        private string? installLocation = null;
+        private string installLocation = null;
 
         public LocatorForm()
         {
@@ -57,7 +58,7 @@ namespace PsychonautsFixer
             locateButton.Hide();
             searchButton.Hide();
 
-            Task.Run(async () => await FindGame()).ContinueWith(task =>
+            Task.Factory.StartNew(() => FindGame().Result).ContinueWith(task =>
             {
                 installLocation = skipSearch ? null : task.Result;
                 Invoke(new MethodInvoker(() =>
@@ -84,14 +85,14 @@ namespace PsychonautsFixer
             });
         }
 
-        async Task<string?> FindGame()
+        Task<string> FindGame()
         {
-            return await Task.Run(() =>
+            return Task.Factory.StartNew(() =>
             {
                 string registryKey = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall";
                 using (var key = Registry.LocalMachine.OpenSubKey(registryKey))
                 {
-                    var subKeyNames = key!.GetSubKeyNames()!;
+                    var subKeyNames = key.GetSubKeyNames();
                     for (var i = 0; i < subKeyNames.Length; ++i)
                     {
                         SetProgressLabel(i, subKeyNames.Length);
@@ -110,29 +111,32 @@ namespace PsychonautsFixer
             });
         }
 
-        public static string? GetGameLocation()
+        public static string GetGameLocation()
         {
-            using var instance = new LocatorForm();
-            var result = instance.ShowDialog();
-            if (result == DialogResult.OK)
-                return instance.installLocation!;
-            else
-                return null;
+            using (var instance = new LocatorForm())
+            {
+                var result = instance.ShowDialog();
+                if (result == DialogResult.OK)
+                    return instance.installLocation;
+                else
+                    return null;
+            }
         }
 
         private void locateButton_Click(object sender, EventArgs e)
         {
-            using var openDialog = new OpenFileDialog()
+            using (var openDialog = new OpenFileDialog()
             {
                 FileName = "Psychonauts.exe",
                 Filter = "Psychonauts.exe|Psychonauts.exe|*.exe|*.exe|*.*|*.*"
-            };
-
-            if (openDialog.ShowDialog() == DialogResult.OK)
+            })
             {
-                installLocation = Path.GetDirectoryName(openDialog.FileName);
-                DialogResult = DialogResult.OK;
-                Close();
+                if (openDialog.ShowDialog() == DialogResult.OK)
+                {
+                    installLocation = Path.GetDirectoryName(openDialog.FileName);
+                    DialogResult = DialogResult.OK;
+                    Close();
+                }
             }
         }
 
